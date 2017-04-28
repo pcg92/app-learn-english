@@ -23,6 +23,8 @@ public class MainActivity extends BaseActivity implements MainMvpView{
         ButterKnife.bind(this);
         mMainPresenter.attachView(this);
 
+        saveVocabulary();
+
     }
 
     @Override
@@ -31,8 +33,9 @@ public class MainActivity extends BaseActivity implements MainMvpView{
         mMainPresenter.detachView();
     }
 
-    @Override
-    public void onSignedOut() {
 
+    @Override
+    public void saveVocabulary() {
+        mMainPresenter.saveVocabulary();
     }
 }
