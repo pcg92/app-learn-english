@@ -4,11 +4,14 @@ import android.util.Log;
 
 import com.costaoeste.learnenglish.data.local.RealmVocabularyRepo;
 import com.costaoeste.learnenglish.data.model.Vocabulary;
+import com.costaoeste.learnenglish.data.model.VocabularyRemote;
+import com.costaoeste.learnenglish.data.remote.DictionaryService;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.realm.Sort;
 
 /**
@@ -17,10 +20,12 @@ import io.realm.Sort;
 
 public class DataManager {
 
+    private final DictionaryService mDictionaryService;
     private final RealmVocabularyRepo mVocabularyRepo;
 
     @Inject
-    public DataManager(RealmVocabularyRepo vocabularyRepo){
+    public DataManager(DictionaryService dictionaryService,RealmVocabularyRepo vocabularyRepo){
+        this.mDictionaryService = dictionaryService;
         this.mVocabularyRepo=vocabularyRepo;
     }
 
@@ -30,5 +35,11 @@ public class DataManager {
 
     public void getVocabulary(){
         List<Vocabulary> vocabularies = mVocabularyRepo.findAllSorted("word", Sort.ASCENDING,true);
+    }
+
+
+    public Observable<VocabularyRemote> searchWord (String word) {
+        return mDictionaryService.searchWord(word);
+        //return null;
     }
 }

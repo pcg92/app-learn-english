@@ -5,8 +5,11 @@ import android.content.Context;
 
 import com.costaoeste.learnenglish.BuildConfig;
 import com.costaoeste.learnenglish.LearnEnglishApplication;
+import com.costaoeste.learnenglish.data.remote.DictionaryService;
 import com.costaoeste.learnenglish.injection.qualifiers.ApplicationContext;
 import com.costaoeste.learnenglish.injection.scopes.PerApplication;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -43,6 +46,12 @@ public class ApplicationModule {
   @Provides
   static Realm provideRealm(RealmConfiguration realmConfiguration) {
     return Realm.getInstance(realmConfiguration);
+  }
+
+  @Provides
+  @PerApplication
+  DictionaryService provideDictionaryService() {
+    return DictionaryService.Factory.makeService();
   }
 
 }

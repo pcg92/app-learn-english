@@ -28,6 +28,8 @@ public class MainActivity extends BaseActivity implements MainMvpView{
         mMainPresenter.attachView(this);
 
         saveVocabulary();
+
+
     }
 
     @Override
