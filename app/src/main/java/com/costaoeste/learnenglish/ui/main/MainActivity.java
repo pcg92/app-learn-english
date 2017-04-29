@@ -2,7 +2,9 @@ package com.costaoeste.learnenglish.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.costaoeste.learnenglish.BuildConfig;
 import com.costaoeste.learnenglish.R;
 import com.costaoeste.learnenglish.ui.base.BaseActivity;
 import com.costaoeste.learnenglish.ui.notebook.NotebookActivity;
@@ -26,7 +28,6 @@ public class MainActivity extends BaseActivity implements MainMvpView{
         mMainPresenter.attachView(this);
 
         saveVocabulary();
-
     }
 
     @Override

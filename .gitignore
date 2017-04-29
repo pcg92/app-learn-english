@@ -56,3 +56,5 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+# Ignore secrets api keys
+secrets.properties
