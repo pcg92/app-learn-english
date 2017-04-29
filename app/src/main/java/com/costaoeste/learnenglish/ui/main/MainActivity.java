@@ -7,6 +7,7 @@ import android.util.Log;
 import com.costaoeste.learnenglish.BuildConfig;
 import com.costaoeste.learnenglish.R;
 import com.costaoeste.learnenglish.ui.base.BaseActivity;
+import com.costaoeste.learnenglish.ui.dialog.CardDialog;
 import com.costaoeste.learnenglish.ui.notebook.NotebookActivity;
 
 import javax.inject.Inject;
@@ -28,8 +29,6 @@ public class MainActivity extends BaseActivity implements MainMvpView{
         mMainPresenter.attachView(this);
 
         saveVocabulary();
-
-
     }
 
     @Override
