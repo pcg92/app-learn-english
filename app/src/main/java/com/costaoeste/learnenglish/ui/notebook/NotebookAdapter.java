@@ -7,22 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.costaoeste.learnenglish.R;
+import com.costaoeste.learnenglish.data.model.Vocabulary;
 import com.costaoeste.learnenglish.ui.notebook.NotebookFragment.OnListFragmentInteractionListener;
-import com.costaoeste.learnenglish.ui.notebook.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Vocabulary> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public NotebookAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public NotebookAdapter(List<Vocabulary> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,17 +33,12 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        //holder.mIdView.setText(mValues.get(position).id);
+        //holder.mContentView.setText(mValues.get(position).content);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+        holder.mView.setOnClickListener(v -> {
+            if (null != mListener) {
+                mListener.onListFragmentInteraction(holder.mItem);
             }
         });
     }
@@ -61,7 +52,7 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Vocabulary mItem;
 
         public ViewHolder(View view) {
             super(view);

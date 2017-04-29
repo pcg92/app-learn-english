@@ -33,10 +33,9 @@ public class DataManager {
         mVocabularyRepo.save(vocabulary);
     }
 
-    public void getVocabulary(){
-        List<Vocabulary> vocabularies = mVocabularyRepo.findAllSorted("word", Sort.ASCENDING,true);
+    public List<Vocabulary> getVocabulary(){
+        return mVocabularyRepo.findAllSorted("word", Sort.ASCENDING,true);
     }
-
 
     public Observable<VocabularyRemote> searchWord (String word) {
         return mDictionaryService.searchWord(word);

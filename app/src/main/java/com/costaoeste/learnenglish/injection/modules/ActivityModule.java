@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.costaoeste.learnenglish.injection.qualifiers.ActivityContext;
+import com.costaoeste.learnenglish.injection.scopes.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class ActivityModule {
-    private Activity mActivity;
+
+    private final Activity mActivity;
 
     public ActivityModule(Activity activity) {
         mActivity = activity;
@@ -22,6 +24,7 @@ public class ActivityModule {
     }
 
     @Provides
+    @PerActivity
     @ActivityContext
     Context providesContext() {
         return mActivity;
