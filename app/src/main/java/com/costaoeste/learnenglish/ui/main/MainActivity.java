@@ -5,10 +5,12 @@ import android.os.Bundle;
 
 import com.costaoeste.learnenglish.R;
 import com.costaoeste.learnenglish.ui.base.BaseActivity;
+import com.costaoeste.learnenglish.ui.notebook.NotebookActivity;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainMvpView{
 
@@ -37,5 +39,10 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     @Override
     public void saveVocabulary() {
         mMainPresenter.saveVocabulary();
+    }
+
+    @OnClick(R.id.card_notebook)
+    void onClickCardNotebook(){
+        startActivity(NotebookActivity.getCallingIntent(this));
     }
 }
