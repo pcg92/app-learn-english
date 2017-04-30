@@ -16,6 +16,8 @@ import com.costaoeste.learnenglish.ui.base.BaseActivity;
 import com.costaoeste.learnenglish.ui.dialog.CardDialog;
 import com.costaoeste.learnenglish.ui.vocabulary.VocabularyDetailActivity;
 
+import org.parceler.Parcels;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -54,7 +56,7 @@ public class NotebookActivity extends BaseActivity implements NotebookFragment.O
 
     @Override
     public void onItemClicked(Vocabulary item) {
-        startActivity(VocabularyDetailActivity.getCallingIntent(this));
+        startActivity(VocabularyDetailActivity.getCallingIntent(this, Parcels.wrap(item)));
     }
 
     @Override

@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.daimajia.swipe.SwipeLayout android:id="@+id/swipe_item_notebook"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_item_notebook"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content">
 
-
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:id="@+id/layout_bottom_item_notebook"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="right"
-        android:layout_marginBottom="10dp"
-        card_view:cardCornerRadius="4dp">
-
-        <ImageView
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </android.support.v7.widget.CardView>
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
 
 
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_bottom_item_notebook_more"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_search" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_bottom_item_notebook_delete"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_delete" />
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -30,14 +49,13 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
         card_view:cardCornerRadius="4dp">
 
         <TextView
-            android:gravity="center"
             android:id="@+id/text_item_notebook_word"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:textAppearance="?attr/textAppearanceListItem" />
 
     </android.support.v7.widget.CardView>

@@ -79,9 +79,16 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
             mSwipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
         }
 
-        @OnClick(R.id.layout_bottom_item_notebook)
+        @OnClick(R.id.card_bottom_item_notebook_delete)
         void onClickDelete(){
             Log.w("Pablo"," delete :"+mItem.getWord());
+            mListener.onItemRemove(mItem);
+        }
+
+
+        @OnClick(R.id.card_bottom_item_notebook_more)
+        void onClickMore(){
+            mListener.onItemClicked(mItem);
         }
 
         @Override

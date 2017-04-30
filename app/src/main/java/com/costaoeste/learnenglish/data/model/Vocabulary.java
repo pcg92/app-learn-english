@@ -2,13 +2,18 @@ package com.costaoeste.learnenglish.data.model;
 
 import android.support.annotation.NonNull;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmObject;
+import io.realm.VocabularyRealmProxy;
 import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by pablo on 25/4/17.
  */
-
+@Parcel(implementations = { VocabularyRealmProxy.class },
+        value = Parcel.Serialization.FIELD,
+        analyze = { Vocabulary.class })
 public class Vocabulary extends RealmObject implements Comparable<Vocabulary> {
 
     @PrimaryKey
