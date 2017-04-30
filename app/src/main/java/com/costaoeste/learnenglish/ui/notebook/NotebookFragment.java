@@ -31,7 +31,7 @@ public class NotebookFragment extends BaseFragment implements NotebookMvpView {
     @BindView(R.id.layout_list_notebook_empty)
     View mLayoutEmptyList;
 
-    private OnListFragmentInteractionListener mListener;
+    private OnNotebookListInteractionListener mListener;
     private NotebookAdapter mAdapter;
 
     @Inject
@@ -71,11 +71,11 @@ public class NotebookFragment extends BaseFragment implements NotebookMvpView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnNotebookListInteractionListener) {
+            mListener = (OnNotebookListInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnNotebookListInteractionListener");
         }
     }
 
@@ -118,7 +118,10 @@ public class NotebookFragment extends BaseFragment implements NotebookMvpView {
     }
 
 
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Vocabulary item);
+    public interface OnNotebookListInteractionListener {
+
+        void onItemClicked(Vocabulary item);
+
+        void onItemRemove(Vocabulary item);
     }
 }

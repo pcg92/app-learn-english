@@ -1,6 +1,7 @@
 package com.costaoeste.learnenglish.ui.notebook;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,17 +9,21 @@ import android.widget.TextView;
 
 import com.costaoeste.learnenglish.R;
 import com.costaoeste.learnenglish.data.model.Vocabulary;
-import com.costaoeste.learnenglish.ui.notebook.NotebookFragment.OnListFragmentInteractionListener;
+import com.daimajia.swipe.SwipeLayout;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHolder> {
 
     private final List<Vocabulary> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final NotebookFragment.OnNotebookListInteractionListener mListener;
 
-    public NotebookAdapter(List<Vocabulary> items, OnListFragmentInteractionListener listener) {
+    public NotebookAdapter(List<Vocabulary> items, NotebookFragment.OnNotebookListInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,11 +41,11 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
         //holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).getWord());
 
-        holder.mView.setOnClickListener(v -> {
+        /*holder.mView.setOnClickListener(v -> {
             if (null != mListener) {
                 mListener.onListFragmentInteraction(holder.mItem);
             }
-        });
+        }); */
     }
 
     @Override
@@ -54,16 +59,29 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
         public Vocabulary mItem;
+
+        @BindView(R.id.text_item_notebook_word)
+        TextView mContentView;
+
+        @BindView(R.id.swipe_item_notebook)
+        SwipeLayout mSwipeLayout;
+
+        @BindView(R.id.layout_bottom_item_notebook)
+        View mLayoutBottom;
 
         public ViewHolder(View view) {
             super(view);
+            ButterKnife.bind(this,view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mSwipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
+        }
+
+        @OnClick(R.id.layout_bottom_item_notebook)
+        void onClickDelete(){
+            Log.w("Pablo"," delete :"+mItem.getWord());
         }
 
         @Override

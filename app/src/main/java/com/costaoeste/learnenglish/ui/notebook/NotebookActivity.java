@@ -19,7 +19,7 @@ import com.costaoeste.learnenglish.ui.vocabulary.VocabularyDetailActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NotebookActivity extends BaseActivity implements NotebookFragment.OnListFragmentInteractionListener {
+public class NotebookActivity extends BaseActivity implements NotebookFragment.OnNotebookListInteractionListener {
 
     NotebookFragment mNotebookFragment;
 
@@ -38,11 +38,6 @@ public class NotebookActivity extends BaseActivity implements NotebookFragment.O
 
     }
 
-    @Override
-    public void onListFragmentInteraction(Vocabulary item) {
-        startActivity(VocabularyDetailActivity.getCallingIntent(this));
-    }
-
     @OnClick(R.id.button_notebook_add)
     void onClickAddWord(){
         CardDialog dialog = new CardDialog.Builder(this)
@@ -55,5 +50,15 @@ public class NotebookActivity extends BaseActivity implements NotebookFragment.O
 
     private void notifyNewWordToFragment(String word){
         mNotebookFragment.addNewWord(word);
+    }
+
+    @Override
+    public void onItemClicked(Vocabulary item) {
+        startActivity(VocabularyDetailActivity.getCallingIntent(this));
+    }
+
+    @Override
+    public void onItemRemove(Vocabulary item) {
+
     }
 }

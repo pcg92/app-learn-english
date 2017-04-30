@@ -21,9 +21,6 @@ import butterknife.ButterKnife;
 
 public class CardDialog extends AppCompatDialog implements View.OnClickListener{
 
-    static final int KEYCODE_LANGUAGE_SWITCH_ENG = -102;
-
-
     Builder mBuilder;
     Context mContext;
 

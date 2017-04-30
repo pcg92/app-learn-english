@@ -45,7 +45,7 @@ public class MainPresenter implements Presenter<MainMvpView> {
         //mDataManager.getVocabulary();
 
 
-        mDataManager.searchWord("mouse")
+       /* mDataManager.searchWord("mouse")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<VocabularyRemote>() {
@@ -69,7 +69,7 @@ public class MainPresenter implements Presenter<MainMvpView> {
                     public void onComplete() {
                         Log.w("Pablo"," suscription complete");
                     }
-                });
+                }); */
 
     }
 }
