@@ -34,7 +34,7 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         //holder.mIdView.setText(mValues.get(position).id);
-        //holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).getWord());
 
         holder.mView.setOnClickListener(v -> {
             if (null != mListener) {
@@ -46,6 +46,11 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public void addNewItem(Vocabulary vocabulary){
+        mValues.add(vocabulary);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

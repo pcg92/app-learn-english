@@ -15,6 +15,9 @@ import com.costaoeste.learnenglish.R;
 import com.costaoeste.learnenglish.data.model.Vocabulary;
 import com.costaoeste.learnenglish.ui.base.BaseFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -29,6 +32,7 @@ public class NotebookFragment extends BaseFragment implements NotebookMvpView {
     View mLayoutEmptyList;
 
     private OnListFragmentInteractionListener mListener;
+    private NotebookAdapter mAdapter;
 
     @Inject
     NotebookPresenter mNotebookPresenter;
@@ -82,9 +86,35 @@ public class NotebookFragment extends BaseFragment implements NotebookMvpView {
     }
 
     @Override
-    public void showEmptyItems() {
-        mRecycler.setVisibility(View.GONE);
-        mLayoutEmptyList.setVisibility(View.VISIBLE);
+    public void showEmptyItems(boolean isEmpty) {
+        mRecycler.setVisibility(isEmpty?View.GONE:View.VISIBLE);
+        mLayoutEmptyList.setVisibility(isEmpty?View.VISIBLE:View.GONE);
+    }
+
+    @Override
+    public void loadSavedWords(List<Vocabulary> vocabularyList) {
+        setAdapter(vocabularyList);
+    }
+
+    public void addNewWord(String word){
+
+        Vocabulary newWord = new Vocabulary(word,"");
+        if(mAdapter == null){
+            List<Vocabulary> items = new ArrayList<>();
+            items.add(newWord);
+            setAdapter(items);
+            showEmptyItems(mAdapter.getItemCount()==0);
+        }
+        else{
+            mAdapter.addNewItem(newWord);
+        }
+        mNotebookPresenter.saveWord(newWord);
+    }
+
+    private void setAdapter(List<Vocabulary>items){
+        mAdapter = new NotebookAdapter(items,mListener);
+        mRecycler.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
 

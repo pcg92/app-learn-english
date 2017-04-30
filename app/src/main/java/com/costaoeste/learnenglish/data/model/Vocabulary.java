@@ -33,4 +33,20 @@ public class Vocabulary extends RealmObject implements Comparable<Vocabulary> {
             return 0;
         }
     }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public String getWordTranslated() {
+        return wordTranslated;
+    }
+
+    public void setWordTranslated(String wordTranslated) {
+        this.wordTranslated = wordTranslated;
+    }
 }

@@ -32,8 +32,8 @@ public class NotebookPresenter implements Presenter<NotebookMvpView> {
         mMvpView = null;
     }
 
-    public void addWord(){
-
+    public void saveWord(Vocabulary vocabulary){
+        mDataManager.saveVocabulary(vocabulary);
     }
 
     public void deleteWord(){
@@ -41,10 +41,10 @@ public class NotebookPresenter implements Presenter<NotebookMvpView> {
     }
 
     public void loadWords(){
-
         List<Vocabulary> list = mDataManager.getVocabulary();
-        if(list.isEmpty()){
-            mMvpView.showEmptyItems();
+        mMvpView.showEmptyItems(list.isEmpty());
+        if(!list.isEmpty()){
+            mMvpView.loadSavedWords(list);
         }
     }
 }

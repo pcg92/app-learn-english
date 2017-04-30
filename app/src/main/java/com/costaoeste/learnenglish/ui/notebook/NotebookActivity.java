@@ -21,6 +21,8 @@ import butterknife.OnClick;
 
 public class NotebookActivity extends BaseActivity implements NotebookFragment.OnListFragmentInteractionListener {
 
+    NotebookFragment mNotebookFragment;
+
     public static Intent getCallingIntent(Context context) {
         return new Intent(context, NotebookActivity.class);
     }
@@ -31,6 +33,8 @@ public class NotebookActivity extends BaseActivity implements NotebookFragment.O
         activityComponent().inject(this);
         setContentView(R.layout.activity_notebook);
         ButterKnife.bind(this);
+
+        mNotebookFragment = (NotebookFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_list_notebook);
 
     }
 
@@ -43,9 +47,13 @@ public class NotebookActivity extends BaseActivity implements NotebookFragment.O
     void onClickAddWord(){
         CardDialog dialog = new CardDialog.Builder(this)
                 .setOkListener(newWord -> {
-                    Log.w("NotebookActivity"," new word:"+newWord)       ;
+                    notifyNewWordToFragment(newWord);
                 })
                 .build();
         dialog.show();
+    }
+
+    private void notifyNewWordToFragment(String word){
+        mNotebookFragment.addNewWord(word);
     }
 }

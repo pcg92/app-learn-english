@@ -43,8 +43,6 @@ public class CardDialog extends AppCompatDialog implements View.OnClickListener{
     ImageView mImageHeader;
 
 
-
-
     public CardDialog(Context context, Builder builder) {
         super(context, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
         setContentView(R.layout.card_dialog);
@@ -60,7 +58,7 @@ public class CardDialog extends AppCompatDialog implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
+        buildDialog();
     }
 
     private void buildDialog() {
@@ -83,12 +81,6 @@ public class CardDialog extends AppCompatDialog implements View.OnClickListener{
         }
     }
 
-    public void init() {
-
-        buildDialog();
-
-
-    }
 
     @Override
     public void onClick(View view) {
